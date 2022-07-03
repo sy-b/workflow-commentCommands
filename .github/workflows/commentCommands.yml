@@ -76,6 +76,8 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       (
+      contains(github.event.comment.body, '/help me') ||
+      contains(github.event.comment.body, '/need help') ||
       contains(github.event.comment.body, '/helpwanted') ||
       contains(github.event.comment.body, '/help wanted')
       ) && (
