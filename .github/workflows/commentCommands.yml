@@ -101,10 +101,10 @@ jobs:
     if: |
       (
       contains(github.event.comment.body, '/goodfirstissue') ||
-      contains(github.event.comment.body, '/good first issue') ||
+      contains(github.event.comment.body, '/good first issue')
       ) && (
       github.event.comment.author_association == 'OWNER' ||
-      github.event.comment.author_association == 'COLLABORATOR'
+      github.event.comment.author_association == 'COLLABORATOR' ||
       github.event.comment.author_association == 'CONTRIBUTOR'
       )
     steps:
