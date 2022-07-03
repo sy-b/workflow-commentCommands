@@ -23,7 +23,7 @@ jobs:
   add-label-duplicate:
     runs-on: ubuntu-latest
     if: |
-      contains(github.event.comment.body, "/duplicate") == '/add' && (
+      contains(github.event.comment.body, "/duplicate") && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
       github.event.comment.author_association == 'CONTRIBUTOR' )
@@ -40,7 +40,7 @@ jobs:
   add-label-documentation:
     runs-on: ubuntu-latest
     if: |
-      contains(github.event.comment.body, "/documentation") == '/add' && (
+      contains(github.event.comment.body, "/documentation") && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
       github.event.comment.author_association == 'CONTRIBUTOR' )
@@ -57,7 +57,7 @@ jobs:
   add-label-accessibility:
     runs-on: ubuntu-latest
     if: |
-      contains(github.event.comment.body, "/accessibility") == '/add' && (
+      contains(github.event.comment.body, "/accessibility") && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
       github.event.comment.author_association == 'CONTRIBUTOR' )
