@@ -1,4 +1,4 @@
-name: IssueCommentCommands
+name: CommentCommands
 
 on:
   issue_comment:
