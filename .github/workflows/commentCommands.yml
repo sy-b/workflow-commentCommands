@@ -27,7 +27,7 @@ jobs:
       contains(github.event.comment.body, '/duplicate') && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR' )
+      github.event.comment.author_association != 'CONTRIBUTOR' )
     steps:
       - name: add-label-duplicate
         run: |
@@ -44,7 +44,7 @@ jobs:
       contains(github.event.comment.body, '/documentation') && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR' )
+      github.event.comment.author_association != 'CONTRIBUTOR' )
     steps:
       - name: add-label-documentation
         run: |
@@ -61,7 +61,7 @@ jobs:
       contains(github.event.comment.body, '/accessibility') && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR' )
+      github.event.comment.author_association != 'CONTRIBUTOR' )
     steps:
       - name: add-label-accessibility
         run: |
@@ -84,7 +84,7 @@ jobs:
       ) && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR'
+      github.event.comment.author_association != 'CONTRIBUTOR'
       )
     steps:
       - name: add-label-help-wanted
@@ -105,7 +105,7 @@ jobs:
       ) && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR'
+      github.event.comment.author_association != 'CONTRIBUTOR'
       )
     steps:
       - name: add-label-good-first-issue
@@ -123,7 +123,7 @@ jobs:
       contains(github.event.comment.body,'/improve') && (
       github.event.comment.author_association == 'OWNER' ||
       github.event.comment.author_association == 'COLLABORATOR' ||
-      github.event.comment.author_association =! 'CONTRIBUTOR' )
+      github.event.comment.author_association != 'CONTRIBUTOR' )
     steps:
       - name: request-issue-framing-improvement
         run: |
