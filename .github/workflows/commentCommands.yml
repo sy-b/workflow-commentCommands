@@ -9,7 +9,7 @@ jobs:
   assign-commentor:
     runs-on: ubuntu-latest
     if: |
-      github.event.comment.body == '/assignme'
+      contains(github.event.comment.body, '/assignme')
     steps:
       - name: Assigning to commenter
         run: |
