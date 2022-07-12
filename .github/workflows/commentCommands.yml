@@ -205,8 +205,8 @@ jobs:
       (
       contains(github.event.comment.body, '/wontfix') ||
       contains(github.event.comment.body, '/wont fix') ||
-      contains(github.event.comment.body, '/won\'t fix') ||
-      contains(github.event.comment.body, '/wouldn\'t fix') ||
+      contains(github.event.comment.body, ${{ '/won''t fix' }}) ||
+      contains(github.event.comment.body, ${{ '/wouldn''t fix'}}) ||
       contains(github.event.comment.body, '/would not fix') ||
       contains(github.event.comment.body, '/will not fix')
       ) && (
