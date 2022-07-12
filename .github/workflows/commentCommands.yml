@@ -178,6 +178,26 @@ jobs:
               -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
               -d '{"labels":["invalid"]}'
+  
+  add-label-question:
+    runs-on: ubuntu-latest
+    if: |
+      (
+      contains(github.event.comment.body, '/question')
+      ) && (
+      github.event.comment.author_association == 'OWNER' ||
+      github.event.comment.author_association == 'COLLABORATOR' ||
+      github.event.comment.author_association != 'CONTRIBUTOR'
+      )
+    steps:
+      - name: add-label-question
+        run: |
+          curl \
+              -X POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
+              -d '{"labels":["question"]}'
 
   request-issue-framing-improvement:
     runs-on: ubuntu-latest
