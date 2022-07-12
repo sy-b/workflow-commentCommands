@@ -199,6 +199,31 @@ jobs:
               https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
               -d '{"labels":["question"]}'
 
+  add-label-wontfix:
+    runs-on: ubuntu-latest
+    if: |
+      (
+      contains(github.event.comment.body, '/wontfix') ||
+      contains(github.event.comment.body, '/wont fix') ||
+      contains(github.event.comment.body, "/won't fix") ||
+      contains(github.event.comment.body, "/wouldn't fix") ||
+      contains(github.event.comment.body, '/would not fix') ||
+      contains(github.event.comment.body, '/will not fix')
+      ) && (
+      github.event.comment.author_association == 'OWNER' ||
+      github.event.comment.author_association == 'COLLABORATOR' ||
+      github.event.comment.author_association != 'CONTRIBUTOR'
+      )
+    steps:
+      - name: add-label-wontfix
+        run: |
+          curl \
+              -X POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
+              -d '{"labels":["wontfix"]}'
+
   request-issue-framing-improvement:
     runs-on: ubuntu-latest
     if: |
